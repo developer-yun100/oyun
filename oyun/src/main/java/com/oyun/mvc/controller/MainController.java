@@ -1,0 +1,18 @@
+package com.oyun.mvc.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class MainController {
+
+    @RequestMapping(value="/index")
+    public String view(){
+        return "index";
+    }
+
+    @RequestMapping(value="/title")
+    public String titleView(){
+        return "title";
+    }
+}

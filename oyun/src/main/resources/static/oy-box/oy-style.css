@@ -1,0 +1,283 @@
+
+/* font-style */
+@font-face {
+    font-family: nanumFontKR, Arial, sans-serif;
+    src: url('./fonts/NanumSquareNeoOTF-Bd.otf')
+}
+
+body *{ font-family: 'nanumFontKR', sans-serif; !important; }
+
+
+/* container-list ============================================================================= */
+/*
+2 equal parts */
+div.OY_UI_Container {
+    /*margin: 2px; */
+}
+
+div.OY_UI_Container.two.parts {
+    width: 100%;
+    height: 600px;
+}
+
+div.OY_UI_Container.two.parts.right {
+    width:50%;
+    position: relative;
+    float: right;
+}
+
+div.OY_UI_Container.two.parts.left {
+    width:50%;
+    position: relative;
+    float: left;
+}
+
+/*div.OY_UI_Container.two.parts.child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    outline: dashed 1px black;
+}*/
+
+div.OY_UI_Container.three.parts {
+    width: 100%;
+    height: 400px;
+}
+
+/*div.OY_UI_Grid title {
+    font-size: 30px;
+}*/
+
+/* table-list========================================================================= */
+
+div.OY_UI_Grid {
+    border: 3px solid #000000;
+    width: auto;
+    height: auto;
+    text-align: left;
+    border-collapse: collapse;
+}
+div.OY_UI_Grid .OY_UI_Cell, .div.OY_UI_Grid .OY_UI_Column {
+    border: 1px solid #000000;
+    padding: 5px 4px;
+    height: 20px;
+}
+div.OY_UI_Grid .OY_UI_Body .OY_UI_Cell {
+    font-size: 13px;
+}
+div.OY_UI_Grid .OY_UI_Head {
+    background: #CFCFCF;
+    background: -moz-linear-gradient(top, #76c8ff 0%, #76c8ff 66%, #76c8ff 100%);
+    background: -webkit-linear-gradient(top, #76c8ff 0%, #76c8ff 66%, #76c8ff 100%);
+    background: linear-gradient(to bottom, #76c8ff 0%, #76c8ff 66%, #76c8ff 100%);
+    border-bottom: 3px solid #000000;
+}
+div.OY_UI_Grid .OY_UI_Head .OY_UI_Column {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    border: 1px solid #000000;
+}
+div.OY_UI_Grid .footStyle {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    border-top: 3px solid #000000;
+}
+div.OY_UI_Grid .footStyle {
+    font-size: 14px;
+}
+div.OY_UI_Grid { display: table; }
+div.OY_UI_Rows { display: table-row; height: 10px; !important;}
+div.OY_UI_Head { display: table-header-group;}
+div.OY_UI_Cell, .OY_UI_Column { display: table-cell;}
+div.OY_UI_Head { display: table-header-group;}
+div.OY_UI_Body { display: table-row-group;}
+div.OY_UI_Foot { display: table-footer-group;}
+
+/* div input형 */
+div.OY_UI_input {
+    width: auto;
+    height: auto;
+    outline: 0px;
+    border: 1px solid #000000;
+}
+
+div.OY_UI_input:focus{
+    background-color: #F8E0E6; transition: 0.7s;
+}
+
+/* div input형 */
+div.OY_UI_WebInput {
+    width: 370px;
+    height: 25px;
+    outline: 0px;
+    border: 3px solid #000000;
+    border-radius: 8px;
+}
+
+div.OY_UI_WebInput:focus{
+    outline-color: transparent;
+    outline-style: solid;
+    box-shadow: 0 0 0 6px #76c8ff ;
+    transition: 0.7s;
+
+}
+
+label.OY_UI_WebLabel{
+    position: relative;
+    top: 0;
+    /*margin: -55px;*/
+    font-size: 15px;
+    color: #000000;
+    font-weight: bold;
+}
+
+div.OY_UI_checkBox {
+    width: 25px;
+    height: 25px;
+    margin : 0 auto;
+}
+input[type="checkbox"]{
+    display: none;
+}
+input.OY_UI_checkBox.check{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border:2px solid #707070;
+    position: relative;
+}
+input.OY_UI_checkBox.check:checked{
+    box-shadow: 0 0 0 2px #76c8ff;
+}
+
+
+/* button-list ============================================================================= */
+button.btn {
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: auto;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+button.btn:hover { background-color: #E0ECF8; transition: 0.7s; }
+button.btn:focus {
+    outline-color: transparent;
+    outline-style: solid;
+    box-shadow: 0 0 0 4px #000000 ;
+    transition: 0.7s;
+}
+
+/* color button */
+button.btn.red { background-color: #FF0000; }
+button.btn.blue { background-color: #0000FF; }
+button.btn.green { background-color: #00FF00; }
+button.btn.gray { background-color: #BDBDBD; }
+button.btn.cherryBlossom { background-color: #F5A9A9; }
+button.btn.blueSky { background-color: #58ACFA; }
+button.btn.violetPurple { background-color: #BE81F7; }
+
+/* button image */
+button.btn.img {
+    font-size: 0px; !important;
+    width: 25px; !important;
+    height: 25px; !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+button.btn.img.search { background-image: url("./oy-images/saveIcon.png"); }
+button.btn.img.cancel { background-image: url("./oy-images/cancelIcon.png"); }
+button.btn.save {}
+button.btn.update {}
+button.OY_UI_Simple.memBtn {
+    background-color:#2E64FE;
+    height: 35px;
+    width: 100px;
+    font-size: 15px;
+    color: #FFFFFF;
+    border: none;
+}
+/* button-list ============================================================================= */
+
+
+/* loding bar */
+div.OY_UI_Loding_Mask {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: block;
+    opacity: 0.6;
+    background: #e4e4e4;
+    z-index: 99;
+    text-align: center;
+    margin: 0 auto;
+}
+img.OY_UI_Loding_Mask.img {
+    /*background-image: url("./oy-images/loding.gif"); */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    margin-top: 400px;
+    /*margin: 0 auto;*/
+}
+
+@keyframes blink-effect {
+    50% {
+        opacity: 0;
+    }
+}
+
+label.OY_UI_blink {
+    animation: blink-effect 1s step-end infinite;
+}
+
+/* form =========================================================== */
+
+div.OY_UI_login_Form {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    margin: auto;
+/*    background-color: #F90;*/
+}
+.OY_UI_login_Form.top{
+    background-color: #FFFFFF;
+    height: 30%;
+    position: relative;
+}
+.OY_UI_login_Form.top.h2{
+    color: #002ead;
+    text-align: center;
+}
+.OY_UI_login_Form.center{
+    background-color: #FFFFFF;
+    height: 50%;
+    position: relative;
+}
+.OY_UI_login_Form.bottom{
+    background-color: #FFFFFF;
+    height: 20%;
+    position: relative;
+    top: -15px;
+}
+.OY_UI_login_Form.bottom.down{
+
+}
+
+.OY_UI_login_Form.input {
+
+}
+
+
+
+
