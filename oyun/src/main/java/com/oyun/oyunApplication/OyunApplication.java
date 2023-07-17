@@ -1,4 +1,4 @@
-package com.oyun.oyun;
+package com.oyun.oyunApplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,9 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 @ComponentScan("com.oyun.config")
 public class OyunApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(OyunApplication.class, args);
     }
-
 }

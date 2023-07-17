@@ -5,13 +5,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-    <script src="<c:url value='/static/js/jquery-1.9.1.min.js'/>"></script>
-    <script src="<c:url value='/static/oy-box/oy-js/OY-UI-Item.js'/>"></script>
-    <script src="<c:url value='/static/oy-box/oy-js/OY-UI-Grid.js'/>"></script>
-    <link rel="stylesheet" href="<c:url value='/static/oy-box/oy-style.css'/>">
-    <title>oy.jsDEMO</title>
+    <script src="/static/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/oy-box/oy-js/OY-UI-Item.js"></script>
+    <script src="/static/oy-box/oy-js/OY-UI-Grid.js"></script>
+    <link rel="stylesheet" href="/static/oy-box/oy-style.css">
+
+    <title>title</title>
 
     <script type="text/javascript">
+
         $(document).ready(function(){
             $("#loading").hide();
             // columns
@@ -27,45 +30,45 @@
                 columnTextAlignOption : ["center", "left", "right"]
              */
             let option = {
-                 column : [
-                     {
-                           columnName: "선택"
-                         , keyId: "chk"
-                         , activeOption: "checkBox"
-                         , allCheckColumnOption: "all"
-                     },
-                     {
-                          columnName: "이름"
+                column : [
+                    {
+                        columnName: "선택"
+                        , keyId: "chk"
+                        , activeOption: "checkBox"
+                        , allCheckColumnOption: "all"
+                    },
+                    {
+                        columnName: "이름"
                         , keyId: "name"
                         , activeOption: "dateField"
                         , textAlignOption : "center"
                         , columnTextAlignOption : "center"
                         , cellOption : "pointer"
-                     },
-                     {
-                           columnName: "입사날짜"
-                         , keyId: "date"
-                         , activeOption: "inputField"
-                         , textAlignOption : "center"
-                         , columnTextAlignOption : "center"
-                     },
-                     {
-                           columnName: "직급"
-                         , keyId: "rank"
-                         , activeOption: "dateField"
-                         , textAlignOption : "center"
-                         , columnTextAlignOption : "center"
-                     },
-                     {
-                           columnName: "연봉"
-                         , keyId: "salary"
-                         , activeOption: "dateField"
-                         , textAlignOption : "left"
-                         , columnTextAlignOption : "center"
-                     }
-                 ] // column option
-           /*     , width: "400"
-                , height: "100"*/
+                    },
+                    {
+                        columnName: "입사날짜"
+                        , keyId: "date"
+                        , activeOption: "inputField"
+                        , textAlignOption : "center"
+                        , columnTextAlignOption : "center"
+                    },
+                    {
+                        columnName: "직급"
+                        , keyId: "rank"
+                        , activeOption: "dateField"
+                        , textAlignOption : "center"
+                        , columnTextAlignOption : "center"
+                    },
+                    {
+                        columnName: "연봉"
+                        , keyId: "salary"
+                        , activeOption: "dateField"
+                        , textAlignOption : "left"
+                        , columnTextAlignOption : "center"
+                    }
+                ] // column option
+                /*     , width: "400"
+                     , height: "100"*/
                 , eventAction : "functionName"
                 , rowFootField : "rowFootField"
                 , gridColorOption: ""
@@ -86,14 +89,14 @@
                     ,salary: "4700"
                 },
                 {
-                     chk: 0
+                    chk: 0
                     ,name: "춘향이"
                     ,date: "2023-03-01"
                     ,rank: "대리"
                     ,salary: "4200"
                 },
                 {
-                      chk: 1
+                    chk: 1
                     ,name: "홍길동"
                     ,date: "2023-04-01"
                     ,rank: "차장"
@@ -106,13 +109,10 @@
             OYGrid.addActionEvent("myOYGrid", "cellClick", function(e){
                 let obj = e.target;
                 let eventJson = {
-                      rowIndex : obj.dataset.index
+                    rowIndex : obj.dataset.index
                     , rowKey : obj.dataset.rowkey
                     , value : obj.innerHTML
                 };
-                /*let windowSet;
-                windowSet.document.getElementById("inputA").value = eventJson.value;
-                windowSet = window.open("/main/titlePopup","정보","width=300px, height=500px");*/
             });
         });
 
@@ -133,9 +133,41 @@
             }, 5000);
 
         }
+
+        function fn_logout(){
+
+            let jsonData = {
+                 email : "123"
+                ,name : "321"
+                ,password : "421"
+            };
+
+            ajaxPostCall("/main/logout", jsonData, function(data){
+                alert("로그아웃 !");
+            });
+        }
+
+        function fn_admin(){
+            location.href = "/admin/option";
+        }
     </script>
 </head>
 <body>
+
+   <%-- <div class="OY_UI_main_title">
+        <div class="OY_UI_main_title top">
+            상단
+            <textarea></textarea>
+            <input type="text" />
+        </div>
+    </div>--%>
+
+   <c:if test="${not empty sessionScope}">
+       로그인 되었3 : <br />
+       <h2>${sessionScope.email}</h2>
+       <h2>${sessionScope.name}</h2>
+   </c:if>
+
     <div class="OY_UI_Loding_Mask" id="loading">
         <img src="/static/oy-box/oy-images/loding.gif" style="margin-top: 400px;">
         <br />
@@ -152,8 +184,8 @@
                 <br />
                 <button class="btn red">레드</button>
                 <button class="btn blue">블루</button>
-                <button class="btn green">그린</button>
-                <button class="btn gray">그레이</button>
+                <button class="btn green" onclick="fn_admin();">그린</button>
+                <button class="btn gray" onclick="fn_logout();">그레이</button>
                 <button class="btn cherryBlossom" onclick="fn_pop();">체리블라썸</button>
                 <button class="btn blueSky">블루스카이</button>
                 <button class="btn violetPurple">바이올렛퍼플</button>
@@ -167,8 +199,7 @@
             </div>
         </div>
     </div>
-
-    <br />
-
 </body>
 </html>
+
+<jsp:include page="../include/bottom.jsp" />

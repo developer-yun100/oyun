@@ -5,7 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-    <script src="/static/jquery-1.9.1.min.js"></script>
+    <script src="/static/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/js/common.js"></script>
     <script src="/static/oy-box/oy-js/OY-UI-Item.js"></script>
     <script src="/static/oy-box/oy-js/OY-UI-Grid.js"></script>
     <link rel="stylesheet" href="/static/oy-box/oy-style.css">
@@ -13,6 +14,22 @@
     <script type="text/javascript">
 
         function fn_tran(){
+
+            const serverUrl = "/main/login";
+            let jsonData = {
+                 email : $OY_VAL.value("email")
+                ,name : $OY_VAL.value("name")
+                ,password : $OY_VAL.value("password")
+            };
+
+            let te = document.getElementById("email").innerText;
+            let tg = document.getElementById("email").tagName;
+            console.log(tg + " , te => " +  te);
+            console.log("jsonData => " +  JSON.stringify(jsonData));
+
+            ajaxPostCall(serverUrl, jsonData, function(data){
+                console.log(data);
+            });
 
             /*let jsonData = {
                  url: "/main/transaction"
@@ -24,20 +41,20 @@
                 console.log("data => " + JSON.stringify(data));
             });*/
 
-            let array = new Array();
+            /*let array = new Array();
             for(let i = 0; i < 10; i++){
                 let json = {
                     num: 1 + parseInt(i)
                 };
                 array.push(json);
-            }
+            }*/
 
             // column SUM (arrayData, SUM(key))
-            let sumData = $OY_EASYFUNC.SUM(array, "num");
-            console.log("sumData=> " + sumData);
+            /*let sumData = $OY_EASYFUNC.SUM(array, "num");
+            console.log("sumData=> " + sumData);*/
             // percent(기준값, 비교값, string/int )
-            let percentageData = $OY_EASYFUNC.PERCENTAGE(100, 30, "string");
-            console.log("percentageData=> " + percentageData);
+            /*let percentageData = $OY_EASYFUNC.PERCENTAGE(100, 30, "string");
+            console.log("percentageData=> " + percentageData);*/
         }
 
     </script>
@@ -52,15 +69,15 @@
         </div>
         <div class="OY_UI_login_Form center">
             <label class="OY_UI_WebLabel">Email</label>
-            <div class="OY_UI_WebInput"></div>
+            <div class="OY_UI_WebInput" id="email"></div>
             <br />
             <br />
             <label class="OY_UI_WebLabel">Name</label>
-            <div class="OY_UI_WebInput"></div>
+            <div class="OY_UI_WebInput" id="name"></div>
             <br />
             <br />
             <label class="OY_UI_WebLabel">Password</label>
-            <div class="OY_UI_WebInput"></div>
+            <div class="OY_UI_WebInput" id="password"></div>
             <br />
             <br />
         </div>

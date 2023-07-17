@@ -1,6 +1,7 @@
 
 var itemVer = '0.1';
 var itemLicense = '';
+var itemLanguage = 'KR';
 
 window.onload = function(){
     console.log("Item Load !! ");
@@ -18,6 +19,19 @@ window.onload = function(){
         __oyInput__web[i].setAttribute('contenteditable', 'true');
     }
 }
+
+const $OY_VAL = {
+    value : function(id){
+        let obj = document.getElementById(id);
+        let tageName = obj.tagName;
+        if(tageName == "DIV"){
+            return obj.innerText;
+        } else {
+            return obj.value;
+        }
+    }
+};
+
 
 const $OY_CP = {
     request: function(jsonData, callback){
