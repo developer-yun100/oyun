@@ -52,11 +52,12 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry interceptorRegistry){
         interceptorRegistry.addInterceptor(new Interceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/main/**")
-                .excludePathPatterns("/login/**")
-                .excludePathPatterns("/logout/**")
-                .excludePathPatterns("/error")
-                .excludePathPatterns("/static/**");
+                .excludePathPatterns("/main/**") // main
+                .excludePathPatterns("/login/**") // login
+                .excludePathPatterns("/logout/**") // logout
+                .excludePathPatterns("/error/**") // 404 ~ 505
+                .excludePathPatterns("/main/interceptor/**") // interceptor
+                .excludePathPatterns("/static/**"); // image
     }
 
 }

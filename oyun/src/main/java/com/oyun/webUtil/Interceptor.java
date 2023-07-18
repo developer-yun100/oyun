@@ -11,8 +11,7 @@ public class Interceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler) throws Exception{
         System.out.println("Interceptor URL() => " + req.getRequestURI());
-        System.out.println("SessionUtil.sessionCheck(req) => " + SessionUtil.sessionCheck());
-        if(SessionUtil.sessionCheck()){
+        if(SessionUtil.sessionCheck(req)){
             res.sendRedirect("/main/interceptor");
             return false;
         }

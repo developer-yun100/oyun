@@ -21,13 +21,23 @@ window.onload = function(){
 }
 
 const $OY_VAL = {
-    value : function(id){
+    value: function(id){
         let obj = document.getElementById(id);
         let tageName = obj.tagName;
         if(tageName == "DIV"){
             return obj.innerText;
         } else {
             return obj.value;
+        }
+    },
+    compare: function(val1, val2){
+        let value1 = val1;
+        let value2 = val2;
+
+        if(value1 == value2){
+            return true;
+        } else {
+            return false
         }
     }
 };

@@ -16,6 +16,7 @@
     <script type="text/javascript">
 
         $(document).ready(function(){
+
             $("#loading").hide();
             // columns
             /*
@@ -105,6 +106,74 @@
             ];
 
             OYGrid.create("myOYGrid", option, jsonData);
+
+            // jsonData2
+            let jsonData2 = [
+                {    chk: 0
+                    ,name: "근무자"
+                    ,date: "2023-01-01"
+                    ,rank: "파트장"
+                    ,salary: "4100"
+                },
+                {    chk: 0
+                    ,name: "근로자"
+                    ,date: "2023-02-01"
+                    ,rank: "계장"
+                    ,salary: "4700"
+                },
+                {
+                    chk: 0
+                    ,name: "노동자"
+                    ,date: "2023-03-01"
+                    ,rank: "관리자"
+                    ,salary: "4200"
+                },
+                {
+                    chk: 1
+                    ,name: "노역자"
+                    ,date: "2023-04-01"
+                    ,rank: "일쟁이"
+                    ,salary: "5500"
+                }
+            ];
+
+            OYGrid.create("myOYGrid2", option, jsonData2);
+
+            // jsonData3
+            let jsonData3 = [
+                {    chk: 0
+                    ,name: "강아지"
+                    ,date: "2023-01-01"
+                    ,rank: "2살"
+                    ,salary: "4100"
+                },
+                {    chk: 0
+                    ,name: "고양이"
+                    ,date: "2023-02-01"
+                    ,rank: "1살"
+                    ,salary: "4700"
+                },
+                {
+                    chk: 0
+                    ,name: "캥거루"
+                    ,date: "2023-03-01"
+                    ,rank: "10살"
+                    ,salary: "4200"
+                },
+                {
+                    chk: 1
+                    ,name: "물개"
+                    ,date: "2023-04-01"
+                    ,rank: "400살"
+                    ,salary: "5500"
+                }
+            ];
+
+            OYGrid.create("myOYGrid3", option, jsonData3);
+
+
+            OYGrid.create("myOYGrid4", option, jsonData);
+
             // addActionEvent [ "cellClick", "", "" ]
             OYGrid.addActionEvent("myOYGrid", "cellClick", function(e){
                 let obj = e.target;
@@ -113,6 +182,15 @@
                     , rowKey : obj.dataset.rowkey
                     , value : obj.innerHTML
                 };
+
+                if(eventJson.value == "김삿갓"){
+                    let content = "";
+                    content += "row Index : [" + eventJson.rowIndex;
+                    content += "] row Key : [" + eventJson.rowKey;
+                    content += "] row value : " + eventJson.value;
+                    alert("누른 CELL => " + content);
+                }
+
             });
         });
 
@@ -150,6 +228,39 @@
         function fn_admin(){
             location.href = "/admin/option";
         }
+
+        function fn_saveInfo(){
+
+            $("#loading").show();
+            let password = $OY_VAL.value("password");
+            let passwordChk =  $OY_VAL.value("passwordChk");
+
+            if(!$OY_VAL.compare(password, passwordChk)){
+                alert("입력한 비밀번호가 서로 다릅니다. ");
+                $("#loading").hide();
+                return;
+            }
+
+            let serverUrl = "/main/?";
+            let jsonData = {
+                  email : $OY_VAL.value("email")
+                , name : $OY_VAL.value("name")
+                , phoneNumber : $OY_VAL.value("phoneNumber")
+                , password : $OY_VAL.value("password")
+            };
+
+            setTimeout(function() {
+                $("#loading").hide();
+                alert("정상 처리 되었습니다.");
+                return ;
+            }, 5000);
+
+            /*ajaxPostCall("serverUrl", jsonData, function(data){
+               console.log(data);
+            });*/
+
+        }
+
     </script>
 </head>
 <body>
@@ -193,13 +304,70 @@
                 입력 테스트
                 <div class="OY_UI_WebInput"></div>
                 <br />
+
+                <p>grid 2</p>
+                <div id="myOYGrid2"></div>
+                <br />
+
+                <p>grid 3</p>
+                <div id="myOYGrid3"></div>
+                <br />
+
+                <p>grid 4</p>
+                <div id="myOYGrid4"></div>
+                <br />
+
             </div>
             <br />
             <div class="OY_UI_Container two parts right">
+                <label class="OY_UI_WebLabel">이메일</label>
+                <span class="tooltip">
+                    <div class="OY_UI_WebInput" id="email"></div>
+                    <span class="tooltip-text">이메일을 입력 하세요.</span>
+                </span>
+                <br />
+                <br />
+                <label class="OY_UI_WebLabel">이름</label>
+                <span class="tooltip">
+                    <div class="OY_UI_WebInput" id="name"></div>
+                    <span class="tooltip-text">이름을 입력 하세요.</span>
+                </span>
+                <br />
+                <br />
+                <label class="OY_UI_WebLabel">전화번호</label>
+                <span class="tooltip">
+                    <div class="OY_UI_WebInput" id="phoneNumber"></div>
+                    <span class="tooltip-text">전화 번호를 입력 하세요.</span>
+                </span>
+                <br />
+                <br />
+                <label class="OY_UI_WebLabel">비밀번호</label>
+                <span class="tooltip">
+                    <div class="OY_UI_WebInput password" id="password"></div>
+                    <span class="tooltip-text">비밀번호를 입력 하세요.</span>
+                </span>
+                <br />
+                <br />
+                <label class="OY_UI_WebLabel">비밀번호 확인</label>
+                <span class="tooltip">
+                    <div class="OY_UI_WebInput password" id="passwordChk"></div>
+                    <span class="tooltip-text">위 비밀번호와 동일한 번호를 입력 하세요.</span>
+                </span>
+                <br />
+                <br />
+                <button class="btn violetPurple" onclick="fn_saveInfo();">저장하기</button>
             </div>
         </div>
     </div>
+
+
+   <div class="OY_UI_title_bottom">
+       <h4 class="OY_UI_h4">회사명: OY-SYSTEM</h4>
+       <h4 class="OY_UI_h4">대표: JooOYun</h4>
+       <h4 class="OY_UI_h4">오시는 길: 경기도 광주시</h4>
+       <h4 class="OY_UI_h4">전화번호: 031-123-1234</h4>
+   </div>
 </body>
 </html>
 
-<jsp:include page="../include/bottom.jsp" />
+<%--<jsp:include page="../include/bottom.jsp" />--%>

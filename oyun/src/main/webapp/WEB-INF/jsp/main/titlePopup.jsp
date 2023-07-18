@@ -84,6 +84,7 @@
         <div class="OY_UI_login_Form bottom">
             <br />
             <br />
+            <button class="OY_UI_Simple memBtn" onclick="fn_tran();">Sign-In</button>
             <button class="OY_UI_Simple memBtn" onclick="fn_tran();">Sign-Up</button>
             <br />
             <br />

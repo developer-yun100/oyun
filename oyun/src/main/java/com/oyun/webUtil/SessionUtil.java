@@ -18,12 +18,10 @@ public class SessionUtil {
         SESSION.setMaxInactiveInterval(60 * 30);
     }
 
-    public static boolean sessionCheck(){
-        if(SESSION == null || SESSION.getAttribute("isCheck") == null){
-            System.out.println("sessionCheck true");
+    public static boolean sessionCheck(HttpServletRequest req){
+        if(SESSION == null || !req.isRequestedSessionIdValid()){
             return true;
         } else {
-            System.out.println("sessionCheck false");
             return false;
         }
     }
@@ -34,6 +32,7 @@ public class SessionUtil {
 
     public static void sessionInvalidate(){
         SESSION.invalidate();
+        SESSION = null;
     }
 
 

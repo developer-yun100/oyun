@@ -69,5 +69,13 @@ function ajaxMultiPartCall(url, params, callback){
     });
 }
 
+/* common function !! */
+
+
+
+
+
+
+
 
 

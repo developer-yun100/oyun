@@ -116,25 +116,39 @@ div.OY_UI_WebInput {
     width: 370px;
     height: 25px;
     outline: 0px;
+    color: #000000;
     border: 3px solid #000000;
     border-radius: 8px;
 }
 
+div.OY_UI_WebInput.password {
+    -webkit-text-security: disc;
+    -webkit-appearance: textfield;
+    background-color: white;
+    -webkit-user-select: text;
+    cursor: auto;
+}
+
 div.OY_UI_WebInput:focus{
+    background-color: #F8E0E6;
     outline-color: transparent;
     outline-style: solid;
-    box-shadow: 0 0 0 6px #76c8ff ;
+    box-shadow: 0 0 0 3px #76c8ff ;
     transition: 0.7s;
-
 }
 
 label.OY_UI_WebLabel{
     position: relative;
     top: 0;
+    width: 80px;
     /*margin: -55px;*/
-    font-size: 15px;
+    font-size: 12px;
     color: #000000;
     font-weight: bold;
+
+    display:inline-block;
+    text-align:center;
+    font-weight:bold;
 }
 
 div.OY_UI_checkBox {
@@ -303,7 +317,6 @@ div.OY_UI_title_bottom{
     background-color:#000000;
     position: absolute;
     bottom: 0;
-    left: 0;
 }
 /*.OY_UI_main_title.footer{
     background-color: #000000;
@@ -313,7 +326,34 @@ div.OY_UI_title_bottom{
     bottom: 0;
     left: 0;
 }*/
+span.tooltip {
+    display: inline-block;
+    color: #58ACFA;
+    font-weight: bold;
+}
+.tooltip-text {
+    display: none;
+    position: absolute;
+    max-width: 200px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 0.8em;
+    color: #FFFFFF;
+    background: #58ACFA;
+}
+.tooltip:hover .tooltip-text {
+    display: block;
+}
 
+/*footer.OY_UI_Footer {
+    bottom: 0px;
+    position: absolute;
+    height: 15%;
+    background: yellow;
+}*/
+
+/* id  */
 
 
 
