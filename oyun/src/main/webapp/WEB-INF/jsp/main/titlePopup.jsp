@@ -91,7 +91,7 @@
             <br />
             <img src="" />
             <div class="OY_UI_login_Form bottom down">
-                <h2 style="position:fixed; left: 0; right: 0; bottom: 0; border-bottom-style: dashed;">(주)OY-SYSTEM</h2>
+                <h2 style="position:fixed; left: 0; right: 0; bottom: 0; border-bottom-style: dashed;">OY-G(IT-Enterprise)</h2>
             </div>
         </div>
     </div>

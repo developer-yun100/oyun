@@ -109,20 +109,20 @@
 
             // jsonData2
             let jsonData2 = [
-                {    chk: 0
+                {    chk: 1
                     ,name: "근무자"
                     ,date: "2023-01-01"
                     ,rank: "파트장"
                     ,salary: "4100"
                 },
-                {    chk: 0
+                {    chk: 1
                     ,name: "근로자"
                     ,date: "2023-02-01"
                     ,rank: "계장"
                     ,salary: "4700"
                 },
                 {
-                    chk: 0
+                    chk: 1
                     ,name: "노동자"
                     ,date: "2023-03-01"
                     ,rank: "관리자"
@@ -161,7 +161,7 @@
                     ,salary: "4200"
                 },
                 {
-                    chk: 1
+                    chk: 0
                     ,name: "물개"
                     ,date: "2023-04-01"
                     ,rank: "400살"
@@ -265,19 +265,21 @@
 </head>
 <body>
 
-   <%-- <div class="OY_UI_main_title">
-        <div class="OY_UI_main_title top">
-            상단
-            <textarea></textarea>
-            <input type="text" />
-        </div>
-    </div>--%>
+   <header class="OY_UI_menu_title">
+       <h1>OY-G(IT-Enterprise)</h1>
+       <nav class="OY_UI_menu_nav">
+           <span class="OY_UI_spanPoint">회사소개</span>
+           <span class="OY_UI_spanPoint">투자정보</span>
+           <span class="OY_UI_spanPoint">경영/채용</span>
+           <span class="OY_UI_spanPoint">미디어센터</span>
+           <span class="OY_UI_spanPoint">고객센터</span>
+       </nav>
+   </header>
 
-   <c:if test="${not empty sessionScope}">
-       로그인 되었3 : <br />
-       <h2>${sessionScope.email}</h2>
-       <h2>${sessionScope.name}</h2>
-   </c:if>
+   <br />
+   <br />
+   <br />
+   <br />
 
     <div class="OY_UI_Loding_Mask" id="loading">
         <img src="/static/oy-box/oy-images/loding.gif" style="margin-top: 400px;">
@@ -356,17 +358,36 @@
                 <br />
                 <br />
                 <button class="btn violetPurple" onclick="fn_saveInfo();">저장하기</button>
+                <br />
+                <br />
+                <p class="OY_UI_p_tag">OY-G / IT-Enterprise</p>
+                <p class="OY_UI_p_tag">OY-Games (게임 개발-운영)</p>
+                <p class="OY_UI_p_tag">OY-Solutions (IT 프로젝트 개발-운영)</p>
+                <p class="OY_UI_p_tag">OY-Delivery (메타버스 생성-> 실물-> 결제 -> 물류 -> 배송 )</p>
+                <p class="OY_UI_p_tag">OY-OYaverse (메타버스[Meta] 플랫폼)</p>
+
             </div>
         </div>
     </div>
 
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
 
-   <div class="OY_UI_title_bottom">
-       <h4 class="OY_UI_h4">회사명: OY-SYSTEM</h4>
-       <h4 class="OY_UI_h4">대표: JooOYun</h4>
-       <h4 class="OY_UI_h4">오시는 길: 경기도 광주시</h4>
-       <h4 class="OY_UI_h4">전화번호: 031-123-1234</h4>
+
+   <main class="OY_UI_main"></main>
+
+   <div class="OY_UI_wrap">
+       <footer class="OY_UI_footer">
+           <h4 class="OY_UI_h4">회사명: OY-G</h4>
+           <h4 class="OY_UI_h4">대표: JooOYun</h4>
+           <h4 class="OY_UI_h4">오시는 길: 경기도 광주시 IT-Park 센터 전층</h4>
+           <h4 class="OY_UI_h4">전화번호: 031-123-1234</h4>
+       </footer>
    </div>
+
 </body>
 </html>
 

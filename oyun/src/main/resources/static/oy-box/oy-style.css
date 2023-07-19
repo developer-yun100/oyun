@@ -124,7 +124,7 @@ div.OY_UI_WebInput {
 div.OY_UI_WebInput.password {
     -webkit-text-security: disc;
     -webkit-appearance: textfield;
-    background-color: white;
+   /* background-color: white;*/
     -webkit-user-select: text;
     cursor: auto;
 }
@@ -344,6 +344,68 @@ span.tooltip {
 }
 .tooltip:hover .tooltip-text {
     display: block;
+}
+
+div.OY_UI_wrap{
+/*    position: fixed;
+    min-height: calc(100vh - 10rem); !* footer 높이를 빼준다. *!*/
+}
+footer.OY_UI_footer{
+    height: 6rem; /* footer 높이 */
+    background: #000000;
+}
+
+header.OY_UI_menu_title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 75px;
+    padding: 1rem;
+    color: white;
+    background: #000000;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav.OY_UI_menu_nav {
+    font-size: 20px;
+}
+
+h1.OY_UI_h1_tag {
+    margin: 0;
+}
+
+p.OY_UI_p_tag{
+    margin: 0;
+}
+span.OY_UI_spanPoint{
+    margin: 0;
+    cursor: pointer;
+}
+span.OY_UI_spanPoint:focus{
+    color: #F8E0E6; transition: 0.7s;
+}
+
+
+main.OY_UI_main {
+    padding: 1rem;
+    height: 100%;
+}
+
+body {
+    padding-top: 75px;
+    background: #EEE;
+}
+
+body, html {
+   /* height: 100%;*/
+}
+
+* {
+    box-sizing: border-box;
 }
 
 /*footer.OY_UI_Footer {
