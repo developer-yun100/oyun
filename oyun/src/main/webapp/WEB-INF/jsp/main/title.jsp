@@ -17,6 +17,7 @@
 
         $(document).ready(function(){
 
+
             $("#loading").hide();
             // columns
             /*
@@ -261,6 +262,40 @@
 
         }
 
+        function pageClick(clickPage){
+
+            let jsonData = {
+                clickPage : clickPage
+            };
+
+            ajaxGetCall("/main/dataReq", jsonData
+                , function(data){
+
+                    if(data.frontResult > 0){
+                        $("#paging").empty();
+                        let html = "";
+
+                        html += '<button class="btn gray" id="fir" name="btn" value="'+data.paging.firstPage+'" onclick="pageClick('+data.paging.firstPage+')">'+ '<<' + '</button>';
+                        html += '<button class="btn gray" id="prev" name="btn" value="'+data.paging.prevPage+'" onclick="pageClick('+data.paging.prevPage+')">'+ '<' + '</button>';
+                        for(let i = 0; i < data.paging.blockPage.length; i++){
+                            if(clickPage == data.paging.blockPage[i].page){
+                                html += '<button class="btn cherryBlossom" font-weight: bold;" name="btn" value="'+data.paging.blockPage[i].page+'" onclick="pageClick('+data.paging.blockPage[i].page+')">'+ data.paging.blockPage[i].page + '</button>';
+                            } else {
+                                html += '<button class="btn gray" name="btn" value="'+data.paging.blockPage[i].page+'" onclick="pageClick('+data.paging.blockPage[i].page+')">'+ data.paging.blockPage[i].page + '</button>';
+                            }
+                        }
+                        html += '<button class="btn gray" id="next" name="btn" value="'+data.paging.nextPage+'" onclick="pageClick('+data.paging.nextPage+')">'+ '>' + '</button>';
+                        html += '<button class="btn gray" id="last" name="btn" value="'+data.paging.lastPage+'" onclick="pageClick('+data.paging.lastPage+')">'+ '>>' + '</button>';
+                        $("#paging").html(html);
+                    } else {
+                        alert(data.msg);
+                        return;
+                    }
+
+                }
+            );
+        }
+
     </script>
 </head>
 <body>
@@ -268,24 +303,125 @@
    <header class="OY_UI_menu_title">
        <h1>OY-G(IT-Enterprise)</h1>
        <nav class="OY_UI_menu_nav">
-           <span class="OY_UI_spanPoint">회사소개</span>
-           <span class="OY_UI_spanPoint">투자정보</span>
-           <span class="OY_UI_spanPoint">경영/채용</span>
-           <span class="OY_UI_spanPoint">미디어센터</span>
-           <span class="OY_UI_spanPoint">고객센터</span>
+           <div class="OY_UI_ItemHeader" id="wrapper">
+               <nav class="OY_UI_ItemHeader_nav" id="nav">
+                   <ul>
+                       <li>회사소개</li>
+                       <li>투자정보</li>
+                       <li>경영/채용</li>
+                       <li>미디어센터</li>
+                       <li>고객센터</li>
+                   </ul>
+                   <div class="OY_UI_ItemHeader_line" id="line"></div>
+               </nav>
+           </div>
        </nav>
    </header>
-
    <br />
    <br />
    <br />
    <br />
-
     <div class="OY_UI_Loding_Mask" id="loading">
         <img src="/static/oy-box/oy-images/loding.gif" style="margin-top: 400px;">
         <br />
         <label class="OY_UI_blink">저장중</label>
     </div>
+
+   <div class="OY_UI_ItemContent" id="contents">
+       <div class="OY_UI_ItemList" id="contents__list">
+           <div class="OY_UI_Item">
+               <div class="OY_UI_Container">
+                   <div class="OY_UI_Container two parts">
+                       <div class="OY_UI_Container two parts left">
+                           <ul>
+                               <li>OY-Games (게임 개발-운영)</li>
+                               <li>OY-Solutions (IT 프로젝트 개발)</li>
+                               <li>OY-Delivery (메타버스 생성-> 실물-> 결제 -> 물류 -> 배송 )</li>
+                               <li>OY-SYSTEM (IT 프로젝트 유지보수)</li>
+                               <li>OY-OYaverse (메타버스[Meta] 플랫폼)</li>
+                           </ul>
+                       </div>
+                       <div class="OY_UI_Container two parts right">
+                           <div class="OY_UI_Item img" style="width:auto; background-image: url('/static/img/co.jpg');"></div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="OY_UI_Item">
+               <div class="OY_UI_Container">
+                   <div class="OY_UI_Container two parts">
+                       <div class="OY_UI_Container two parts left">
+                           <ul>
+                               <li>한국투자증권미래에셋</li>
+                               <li>미래에셋</li>
+                               <li>키움증권</li>
+                               <li>KB증권</li>
+                               <li>우리증권</li>
+                           </ul>
+                       </div>
+                       <div class="OY_UI_Container two parts right">
+                           <div class="OY_UI_Item img" style="width:auto; background-image: url('/static/img/re.jpg');"></div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="OY_UI_Item">
+               <div class="OY_UI_Container">
+                   <div class="OY_UI_Container two parts">
+                       <div class="OY_UI_Container two parts left">
+                           <ul>
+                               <li>신입 인재 채용</li>
+                               <li>경력 인재 채용</li>
+                               <li>대표 채용</li>
+                               <li>협력사 채용</li>
+                           </ul>
+                       </div>
+                       <div class="OY_UI_Container two parts right">
+                           <div class="OY_UI_Item img" style="width:auto; background-image: url('/static/img/ch.jpg');"></div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="OY_UI_Item">
+               <div class="OY_UI_Container">
+                   <div class="OY_UI_Container two parts">
+                       <div class="OY_UI_Container two parts left">
+                           <ul>
+                               <li>JavaScript 입문</li>
+                               <li>리액트를 다루는 기술</li>
+                               <li>시작하세요! 도커</li>
+                               <li>JavaScript 리팩토링</li>
+                           </ul>
+                       </div>
+                       <div class="OY_UI_Container two parts right">
+                           <div class="OY_UI_Item img" style="width:auto; background-image: url('/static/img/me.jpg');"></div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <div class="OY_UI_Item">
+               <div class="OY_UI_Container">
+                   <div class="OY_UI_Container two parts">
+                       <div class="OY_UI_Container two parts left">
+                           <ul>
+                               <li>문의 1</li>
+                               <li>문의 2</li>
+                               <li>문의 3</li>
+                               <li>문의 4</li>
+                           </ul>
+                       </div>
+                       <div class="OY_UI_Container two parts right">
+                           <div class="OY_UI_Item img" style="width:auto; background-image: url('/static/img/ce.jpg');"></div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
 
     <div class="OY_UI_Container">
         <div class="OY_UI_Container two parts">
@@ -297,9 +433,9 @@
                 <br />
                 <button class="btn red">레드</button>
                 <button class="btn blue">블루</button>
-                <button class="btn green" onclick="fn_admin();">그린</button>
-                <button class="btn gray" onclick="fn_logout();">그레이</button>
-                <button class="btn cherryBlossom" onclick="fn_pop();">체리블라썸</button>
+                <button class="btn green" onclick="fn_admin();">어드민사이트</button>
+                <button class="btn gray" onclick="fn_logout();">로그아웃테스트</button>
+                <button class="btn cherryBlossom" onclick="fn_pop();">팝업</button>
                 <button class="btn blueSky">블루스카이</button>
                 <button class="btn violetPurple">바이올렛퍼플</button>
                 <br />
@@ -362,10 +498,18 @@
                 <br />
                 <p class="OY_UI_p_tag">OY-G / IT-Enterprise</p>
                 <p class="OY_UI_p_tag">OY-Games (게임 개발-운영)</p>
-                <p class="OY_UI_p_tag">OY-Solutions (IT 프로젝트 개발-운영)</p>
+                <p class="OY_UI_p_tag">OY-Solutions (IT 프로젝트 개발)</p>
                 <p class="OY_UI_p_tag">OY-Delivery (메타버스 생성-> 실물-> 결제 -> 물류 -> 배송 )</p>
                 <p class="OY_UI_p_tag">OY-OYaverse (메타버스[Meta] 플랫폼)</p>
-
+                <div id="paging">
+                    <button class="btn default" id="fir" name="btn" value="${data.paging.firstPage}" onclick="pageClick('${fn:replace(data.paging.firstPage, "'", "\\'")}');"><<</button>
+                    <button class="btn default" id="prev" name="btn" value="${data.paging.prevPage}" onclick="pageClick('${fn:replace(data.paging.prevPage, "'", "\\'")}')"><</button>
+                    <c:forEach var="item" items="${data.paging.blockPage}">
+                        <button class="btn default" name="btn" value="${item.page}" onclick="pageClick('${fn:replace(item.page, "'", "\\'") }')">${item.page}</button>
+                    </c:forEach>
+                    <button class="btn default" id="next" name="btn" value="${data.paging.nextPage}" onclick="pageClick('${fn:replace(data.paging.nextPage, "'", "\\'")}')">></button>
+                    <button class="btn default" id="last" name="btn" value="${data.paging.lastPage}" onclick="pageClick('${fn:replace(data.paging.lastPage, "'", "\\'")}')">>></button>
+                </div>
             </div>
         </div>
     </div>

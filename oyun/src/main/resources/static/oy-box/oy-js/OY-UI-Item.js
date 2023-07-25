@@ -18,6 +18,32 @@ window.onload = function(){
         console.log("class = > " + __oyInput__web);
         __oyInput__web[i].setAttribute('contenteditable', 'true');
     }
+
+    const links = document.querySelectorAll("#nav > ul > li"); // nav link
+    const firstList = document.querySelector("#nav > ul > li:first-child"); // nav 첫 번째 link
+    const line = document.querySelector("#line"); // menu하단에 존재하는 line
+    const contents__list = document.querySelector("#contents__list"); // 컨텐츠 목록
+    const width =  document.getElementsByClassName('OY_UI_Item')[0].clientWidth;
+
+    // link click 이벤트
+    const clickLink = (e, index) => {
+        contents__list.style.transform = 'translateX('+ (-index * width)+'px)';
+        line.style.width = e.currentTarget.offsetWidth+'px';
+        line.style.left = e.currentTarget.offsetLeft+'px';
+        line.style.top = e.currentTarget.offsetTop+ e.currentTarget.offsetHeight + 'px';
+        contentsIndex = index;
+    }
+
+    // 각 link 별 click 이벤트 등록
+    links.forEach((link, index) => {
+        link.addEventListener('click', (e) => clickLink(e, index));
+    });
+
+    // 초기 line 위치 지정
+    line.style.width = firstList.offsetWidth+'px';
+    line.style.left =  firstList.offsetLeft+'px';
+    line.style.top = (firstList.offsetTop + firstList.offsetHeight)+'px';
+
 }
 
 const $OY_VAL = {
@@ -107,8 +133,6 @@ const $OY_EASYFUNC = {
     }
 
 };
-
-
 
 
 

@@ -8,6 +8,7 @@
 html, body {
     margin: 0px; padding: 0px;
     font-family: 'nanumFontKR', sans-serif; !important;
+
 }
 
 /* container-list ============================================================================= */
@@ -141,8 +142,9 @@ label.OY_UI_WebLabel{
     position: relative;
     top: 0;
     width: 80px;
+    text-align-last: left;
     /*margin: -55px;*/
-    font-size: 12px;
+    font-size: 14px;
     color: #000000;
     font-weight: bold;
 
@@ -360,6 +362,7 @@ header.OY_UI_menu_title {
     top: 0;
     left: 0;
     right: 0;
+    z-index: 1;
 
     height: 75px;
     padding: 1rem;
@@ -371,7 +374,7 @@ header.OY_UI_menu_title {
     align-items: center;
 }
 nav.OY_UI_menu_nav {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 h1.OY_UI_h1_tag {
@@ -397,7 +400,12 @@ main.OY_UI_main {
 
 body {
     padding-top: 75px;
-    background: #EEE;
+    background: #FFFFFF;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 body, html {
@@ -417,5 +425,48 @@ body, html {
 
 /* id  */
 
+
+/* animation */
+div.OY_UI_ItemHeader {
+    max-width: 600px;
+    margin: 0 auto;
+    /*border: 2px solid #000000;*/
+    border-radius: 6px;
+}
+
+nav.OY_UI_ItemHeader_nav > ul {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+nav.OY_UI_ItemHeader_nav > ul > li {
+    list-style: none;
+    margin: 18px;
+    cursor: pointer;
+}
+
+div.OY_UI_ItemHeader_line {
+    position: absolute;
+    height: 4px;
+    background-color: #FFFFFF;
+    transition: .6s ease-out;
+}
+div.OY_UI_ItemContent {
+    overflow: hidden;
+}
+div.OY_UI_ItemList {
+    width: 500%;
+    display: flex;
+    transition: .6s ease-out;
+}
+div.OY_UI_Item {
+    width: 100%;
+    height: 400px;
+}
+div.OY_UI_Item.img {
+    /*float: right;*/
+    /*width: 50%;*/
+}
 
 

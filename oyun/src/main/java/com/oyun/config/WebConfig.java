@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.oyun.mvc.controller")
+@ComponentScan("com.*")
 public class WebConfig implements WebMvcConfigurer {
 
     @Bean
